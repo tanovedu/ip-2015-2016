@@ -8,6 +8,9 @@ public class HelloWorld {
 		
 		// sysout expands to System.out.println() using Ctrl+Space
 		System.out.println("Hello world");
+		
+		// C style output
+		System.out.printf("Count %d", 2+5);
 	}
 
 }
