@@ -6,6 +6,8 @@ public class ControlFlowStatements {
 		// in Eclipse: select statements that should be
 		// extracted to method, press Ctrl+1
 		// ifExample();
+		// in Eclipse - type forExample() and press Ctrl + 1
+		// to automatically create method definition
 		forExample();
 	}
 
