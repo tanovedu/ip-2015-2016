@@ -2,6 +2,9 @@ package org.elsysbg.ip.java;
 
 public class Variables {
 
+	// to automatically create constant using Eclipse:
+	// select constant value in the code, press Ctrl+1
+	// select "Extract to constant"
 	// define constant
 	private static final String HELLO_WORLD = "Hello world";
 
