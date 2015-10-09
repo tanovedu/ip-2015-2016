@@ -12,6 +12,17 @@ public class ClassExample {
 		final Room room = new Room();
 		// compile error, because of final keyword:
 		// room = new Room();
+		
+		// set values
+		room.setHeight(12);
+		room.setWidth(10);
+		
+		// get value of object field
+		final int height = room.getHeight();
+		System.out.println(height);
+		
+		// directly print value (without local variable)
+		System.out.println(room.getWidth());
 	}
 
 }
