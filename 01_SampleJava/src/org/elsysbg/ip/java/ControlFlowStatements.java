@@ -5,7 +5,15 @@ public class ControlFlowStatements {
 	public static void main(String[] args) {
 		// in Eclipse: select statements that should be
 		// extracted to method, press Ctrl+1
-		ifExample();
+		// ifExample();
+		forExample();
+	}
+
+	private static void forExample() {
+		for (int i = 0; i < 10; i++) {
+			// 0 to 9
+			System.out.println(i);
+		}
 	}
 
 	private static void ifExample() {
