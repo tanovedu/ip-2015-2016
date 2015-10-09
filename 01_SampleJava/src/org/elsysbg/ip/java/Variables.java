@@ -12,6 +12,9 @@ public class Variables {
 
 		// assign value
 		a = 0;
+		
+		// init variable value
+		String b = "Hello world";
 	}
 	// error:
 	// a = 0;
