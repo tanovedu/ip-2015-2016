@@ -7,8 +7,11 @@ public class ClassExample {
 		// to create local variable automatically
 		// press Ctrl+2 F to create class field
 		// create object of type Room
-		Room room = new Room();
-
+		// final means that reference 'room' can't be changed
+		// to other object
+		final Room room = new Room();
+		// compile error, because of final keyword:
+		// room = new Room();
 	}
 
 }
