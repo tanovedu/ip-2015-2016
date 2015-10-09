@@ -23,8 +23,12 @@ public class Room {
 		this.height = height;
 	}
 	
+	// in Eclipse: start typing calculateArea and then press Ctrl+Space
 	// define method:
 	public int calculateArea() {
+		// in Eclipse: to change return type (from void to int)
+		// select move cursor to return (where error is) and press
+		// Ctrl + 1
 		// return value
 		return height * width;
 	}
