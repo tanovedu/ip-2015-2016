@@ -22,4 +22,11 @@ public class Room {
 	public void setHeight(int height) {
 		this.height = height;
 	}
+	
+	// define method:
+	public int calculateArea() {
+		// return value
+		return height * width;
+	}
+	
 }
