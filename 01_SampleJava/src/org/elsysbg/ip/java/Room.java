@@ -6,6 +6,9 @@ public class Room {
 	private int width;
 	private int height;
 
+	// in Eclipse: Alt+Shift+S R to generate getters/setters
+	// or right click > Source > Generate getters and setters
+	// or start typing method name, e.g. setH and press Ctrl+Space
 	// getters and setters:
 	public int getWidth() {
 		return width;
