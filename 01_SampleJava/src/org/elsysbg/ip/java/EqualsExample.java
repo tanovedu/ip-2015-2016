@@ -20,7 +20,7 @@ public class EqualsExample {
 		System.out.println(room1 == room2);
 
 		System.out.println("room1.equals(room2)");
-		// false
+		// true
 		System.out.println(room1.equals(room2));
 		
 
