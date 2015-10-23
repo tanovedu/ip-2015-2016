@@ -12,7 +12,7 @@ public class TextInput {
 		// scanner is used
 		// for more info: http://docs.oracle.com/javase/7/docs/api/java/util/Scanner.html
 		final String name = in.next();
-		System.out.println("Hello, " + name);
+		System.out.printf("Hello, %s", name);
 		// always close resources!
 		in.close();
 	}
