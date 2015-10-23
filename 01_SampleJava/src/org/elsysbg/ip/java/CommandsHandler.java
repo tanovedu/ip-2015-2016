@@ -25,6 +25,11 @@ public class CommandsHandler {
 	 */
 	private static int execute(String command) throws IllegalArgumentException {
 		final String[] split = command.split(":");
+		// it is better to implement this in separate class
+		// (e.g. SumCommandHandler) that implements CommandHandler interface
+		// Exact CommandHandler can be get from Map<String, CommandHandler> (command name to command handler)
+		// this will reduce Cyclomatic complexity (branches, e.g. 'if' constructions in the code)
+		// and improve code quality
 		if ("sum".equals(split[0])) {
 			return Integer.valueOf(split[1])
 						+ Integer.valueOf(split[2]);
