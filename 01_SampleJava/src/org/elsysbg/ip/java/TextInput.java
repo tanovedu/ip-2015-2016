@@ -12,6 +12,9 @@ public class TextInput {
 		// scanner is used
 		// for more info: http://docs.oracle.com/javase/7/docs/api/java/util/Scanner.html
 		final String name = in.next();
+		//instead of Scanner you can use
+		// BufferedReader, DataInputStream,
+		// ObjectInputStream, InputStream, etc.
 		System.out.printf("Hello, %s", name);
 		// always close resources!
 		in.close();
