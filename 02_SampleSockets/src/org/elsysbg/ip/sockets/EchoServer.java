@@ -22,7 +22,7 @@ public class EchoServer {
 			
 			final ClientHandler client =
 				new ClientHandler(this, socket);
-			client.run();
+			new Thread(client).start();
 		}
 		serverSocket.close();
 	}
