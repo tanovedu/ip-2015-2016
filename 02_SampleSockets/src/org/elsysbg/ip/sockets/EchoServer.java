@@ -20,10 +20,14 @@ public class EchoServer {
 		while(running) {
 			final Socket socket = serverSocket.accept();
 			
-			final ClientHandler client = new ClientHandler(socket);
+			final ClientHandler client =
+				new ClientHandler(this, socket);
 			client.run();
 		}
 		serverSocket.close();
 	}
 
+	public void stopServer() {
+		running = false;
+	}
 }

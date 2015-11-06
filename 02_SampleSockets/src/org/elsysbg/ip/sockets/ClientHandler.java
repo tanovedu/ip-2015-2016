@@ -10,8 +10,11 @@ public class ClientHandler {
 
 	private final Socket socket;
 
-	public ClientHandler(Socket socket) {
+	private final EchoServer echoServer;
+
+	public ClientHandler(EchoServer echoServer, Socket socket) {
 		this.socket = socket;
+		this.echoServer = echoServer;
 	}
 	
 	public void run() {
@@ -23,6 +26,7 @@ public class ClientHandler {
 			while (scanner.hasNextLine()) {
 				final String line = scanner.nextLine();
 				if (COMMAND_STOP_SERVER.equals(line)) {
+					echoServer.stopServer();
 					break;
 				}
 				out.println(line);
