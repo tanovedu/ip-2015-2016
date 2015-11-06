@@ -1,10 +1,13 @@
 package org.elsysbg.ip.sockets;
 
+import java.io.PrintStream;
+
 public class ClientSocketExample {
 	public static void main(String[] args) {
-		System.out.println("GET / HTTP/1.1");
-		System.out.println("Host:www.example.com");
-		System.out.println("Connection:close");
-		System.out.println("");
+		final PrintStream out = System.out;
+		out.println("GET / HTTP/1.1");
+		out.println("Host:www.example.com");
+		out.println("Connection:close");
+		out.println("");
 	}
 }
