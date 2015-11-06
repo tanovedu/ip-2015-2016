@@ -7,6 +7,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class EchoServer {
+	private static final String COMMAND_STOP_SERVER = "stopServer";
 	private final int port;
 
 	public EchoServer(int port) {
@@ -23,6 +24,9 @@ public class EchoServer {
 			new Scanner(socket.getInputStream());
 		while (scanner.hasNextLine()) {
 			final String line = scanner.nextLine();
+			if (COMMAND_STOP_SERVER.equals(line)) {
+				break;
+			}
 			out.println(line);
 		}
 		scanner.close();
