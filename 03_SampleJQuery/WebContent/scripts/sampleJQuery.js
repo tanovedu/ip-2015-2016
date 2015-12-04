@@ -14,12 +14,18 @@ $(document).ready(function() {
 		// remove list items children of UL, but not of OL 
 		$("ul li").remove();
 	}
+	function removeByFind(parent) {
+		// remove list items children of the parent 
+		parent.find("li").remove();
+	}
 
 	// call function:
 	// removeByClassName();
 	// removeById();
 	// removeByType();
-	removeByDescendant()
+	// removeByDescendant();
+	removeByFind($("ol"));
+	// for more selectors - see https://api.jquery.com/category/selectors/
 	
 	// add new row to the table
 	// very basic example
