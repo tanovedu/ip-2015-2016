@@ -41,6 +41,7 @@ $(document).ready(function() {
 	});
 	
 	$("#addMountain").click(function() {
-		$("ul").append("<li>Vitosha</li>");
+		var newMountainElement = $("<li />");
+		$("ul").append(newMountainElement);
 	});
 });
