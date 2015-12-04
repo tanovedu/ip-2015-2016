@@ -52,7 +52,12 @@ $(document).ready(function() {
 			"mountain"+(nextFreeMountainId++));
 		$("ul").append(newMountainElement);
 	});
+	// this works only for already created elements
+	$("ul li").click(function() {
+		alert("clicked");
+	});
 	
+	// this works for already created elements and future added elements
 	$(document).on("click", "ul li", function() {
 		alert($(this).attr("id"));
 	});
