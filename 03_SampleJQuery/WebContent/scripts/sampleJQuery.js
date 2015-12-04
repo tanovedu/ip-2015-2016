@@ -40,6 +40,7 @@ $(document).ready(function() {
 		$("ul li:first-child").remove();
 	});
 	
+	var nextFreeMountainId = 1;
 	$("#addMountain").click(function() {
 		var newMountainElement = $("<li />");
 		var newMountainName = $("#mountainNameInput").val();
@@ -47,7 +48,8 @@ $(document).ready(function() {
 		// and func(value) for setter, e.g. val() and text()
 		$("#mountainNameInput").val("");
 		newMountainElement.text(newMountainName);
-
+		newMountainElement.attr("id",
+			"mountain"+(nextFreeMountainId++));
 		$("ul").append(newMountainElement);
 	});
 });
