@@ -39,4 +39,8 @@ $(document).ready(function() {
 	$("#removeMountain").click(function() {
 		$("ul li:first-child").remove();
 	});
+	
+	$("#addMountain").click(function() {
+		$("ul").append("<li>Vitosha</li>");
+	});
 });
