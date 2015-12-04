@@ -7,10 +7,14 @@ $(document).ready(function() {
 	function removeById() {
 		$("#studentsTable").remove();
 	}
+	function removeByType() {
+		$("ol").remove();
+	}
 
 	// call function:
 	removeByClassName();
 	removeById();
+	removeByType();
 	
 	// add new row to the table
 	// very basic example
