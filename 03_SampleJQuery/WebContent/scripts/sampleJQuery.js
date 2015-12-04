@@ -4,9 +4,13 @@ $(document).ready(function() {
 	function removeByClassName() {
 		$(".name-column").remove();
 	}
-	
+	function removeById() {
+		$("#studentsTable").remove();
+	}
+
 	// call function:
 	removeByClassName();
+	removeById();
 	
 	// add new row to the table
 	// very basic example
