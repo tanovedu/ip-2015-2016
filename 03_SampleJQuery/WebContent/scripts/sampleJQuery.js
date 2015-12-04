@@ -10,11 +10,16 @@ $(document).ready(function() {
 	function removeByType() {
 		$("ol").remove();
 	}
+	function removeByDescendant() {
+		// remove list items children of UL, but not of OL 
+		$("ul li").remove();
+	}
 
 	// call function:
-	removeByClassName();
-	removeById();
-	removeByType();
+	// removeByClassName();
+	// removeById();
+	// removeByType();
+	removeByDescendant()
 	
 	// add new row to the table
 	// very basic example
