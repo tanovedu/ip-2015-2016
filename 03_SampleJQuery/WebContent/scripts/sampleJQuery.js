@@ -2,6 +2,7 @@ $(document).ready(function() {
 	"use strict"
 	// define function:
 	function removeByClassName() {
+		$(".name-column").remove();
 	}
 	
 	// call function:
