@@ -52,4 +52,9 @@ $(document).ready(function() {
 			"mountain"+(nextFreeMountainId++));
 		$("ul").append(newMountainElement);
 	});
+	
+	$(document).on("click", "ul li", function() {
+		alert($(this).attr("id"));
+	});
+
 });
