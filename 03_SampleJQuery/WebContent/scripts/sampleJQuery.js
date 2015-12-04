@@ -31,8 +31,12 @@ $(document).ready(function() {
 	// very basic example
 	$("table").append("<tr><td>3</td><td>Georgi</td></tr>");
 	
+	// listen for event of type mousemove on selected element
+	$("#removeMountain").on("mousemove", function() {
+		console.log("mouse moved", arguments);
+	});
 	// listen for event of type click on selected element
-	$("#removeMountain").on("click", function() {
+	$("#removeMountain").click(function() {
 		alert("removing mountain");
 	});
 });
