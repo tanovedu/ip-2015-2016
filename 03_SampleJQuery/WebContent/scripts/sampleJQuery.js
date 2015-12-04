@@ -64,7 +64,7 @@ $(document).ready(function() {
 
 	$("#hiking").click(function() {
 		var allMountains = $("ul li");
-		$.each(allMountains, function(index, value) {
+		_.forEach(allMountains, function(value) {
 			var next = $(value);
 			alert(next.text());
 		});
