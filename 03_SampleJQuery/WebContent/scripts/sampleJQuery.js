@@ -43,6 +43,9 @@ $(document).ready(function() {
 	$("#addMountain").click(function() {
 		var newMountainElement = $("<li />");
 		var newMountainName = $("#mountainNameInput").val();
+		// in jQuery it is common to use func() for getter
+		// and func(value) for setter, e.g. val() and text()
+		$("#mountainNameInput").val("");
 		newMountainElement.text(newMountainName);
 
 		$("ul").append(newMountainElement);
