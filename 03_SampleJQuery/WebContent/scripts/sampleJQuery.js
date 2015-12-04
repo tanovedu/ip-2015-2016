@@ -64,10 +64,10 @@ $(document).ready(function() {
 
 	$("#hiking").click(function() {
 		var allMountains = $("ul li");
-		for (var i = 0;i < allMountains.length;i++) {
-			var next = $(allMountains[i]);
+		$.each(allMountains, function() {
+			var next = $(this);
 			alert(next.text());
-		}
+		});
 	});
 
 });
