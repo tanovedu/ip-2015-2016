@@ -37,6 +37,6 @@ $(document).ready(function() {
 	});
 	// listen for event of type click on selected element
 	$("#removeMountain").click(function() {
-		alert("removing mountain");
+		$("ul li:first-child").remove();
 	});
 });
