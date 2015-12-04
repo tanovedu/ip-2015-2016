@@ -42,7 +42,9 @@ $(document).ready(function() {
 	
 	$("#addMountain").click(function() {
 		var newMountainElement = $("<li />");
-		newMountainElement.text("Vitosha");
+		var newMountainName = $("#mountainNameInput").val();
+		newMountainElement.text(newMountainName);
+
 		$("ul").append(newMountainElement);
 	});
 });
