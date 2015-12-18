@@ -34,13 +34,14 @@ $(document).ready(function() {
 		title: "hello",
 		description: "some text"
 	};
-	$.ajax(ENDPOINT, {
+	var createPromise = $.ajax(ENDPOINT, {
 		method: "POST",
 		contentType: "application/json; charset=utf-8",
 		data: JSON.stringify(task),
 		dataType: "json"
 	}).then(function(response) {
 		console.log(response);
+		return response;
 	});
 	// update task
 	$.ajax(taskEndpoint(2), {
@@ -56,4 +57,9 @@ $(document).ready(function() {
 	});
 
 	// delete task
+	createPromise.then(function(response) {
+		$.ajax(taskEndpoint(response.id), {
+			method: "DELETE"
+		});
+	});
 });
