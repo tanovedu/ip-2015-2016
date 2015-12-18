@@ -1,6 +1,10 @@
 $(document).ready(function() {
 	"use strict";
 	var ENDPOINT = "http://localhost:3000/tasks";
+	function taskEndpoint(taskId) {
+		return ENDPOINT + "/" + taskId;
+	}
+
 	// global error handler:
 	$(document).ajaxError(function() {
 		console.log("error: ", arguments);
@@ -26,6 +30,19 @@ $(document).ready(function() {
 	});
 
 	// add task
+	var task = {
+		title: "hello",
+		description: "some text"
+	};
+	$.ajax(ENDPOINT, {
+		method: "POST",
+		contentType: "application/json; charset=utf-8",
+		data: JSON.stringify(task),
+		dataType: "json"
+	}).then(function(response) {
+		console.log(response);
+	});
+
 	// delete task
 	// update task
 });
