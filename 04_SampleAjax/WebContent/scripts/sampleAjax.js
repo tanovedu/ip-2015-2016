@@ -22,7 +22,7 @@ $(document).ready(function() {
 		console.log(response);
 	});
 	// read single task
-	$.ajax(ENDPOINT + "/" + 1, {
+	$.ajax(taskEndpoint(1), {
 		method: "GET",
 		dataType: "json"
 	}).then(function(response) {
@@ -42,7 +42,18 @@ $(document).ready(function() {
 	}).then(function(response) {
 		console.log(response);
 	});
+	// update task
+	$.ajax(taskEndpoint(2), {
+		method: "PUT",
+		contentType: "application/json; charset=utf-8",
+		data: JSON.stringify({
+			title: "updated",
+			description: "new description"
+		}),
+		dataType: "json"
+	}).then(function(response) {
+		console.log(response);
+	});
 
 	// delete task
-	// update task
 });
