@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Todo</title>
+
+		<link rel="stylesheet" href="libs/bootstrap-3.3.6-dist/css/bootstrap.css" />
+	</head>
+	<body>
+		<div class="container">
+			<h1>TODO list</h1>
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="form-group">
+						<button type="button" class="btn btn-default" id="addTaskButton"><span class="glyphicon glyphicon-plus"></span>Add</button>
+					</div>
+					<ul class="list-group" id="tasksList">
+						<!--
+						<li class="list-group-item">task1</li>
+						<li class="list-group-item">task2</li>
+						<li class="list-group-item">task3</li>
+						-->
+					</ul>
+				</div>
+				<div class="col-sm-offset-1 col-sm-8">
+					<div class="panel panel-default" id="emptyPanel">
+						<div class="panel-body">
+							Select task or create one, please
+						</div>
+					</div>
+
+					<div class="panel panel-default" id="readPanel" style="display: none;">
+						<div class="panel-heading task-title"></div>
+						<div class="panel-body">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label class="col-sm-2">Title</label>
+									<div class="col-sm-10 task-title"></div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2">Description</label>
+									<pre class="col-sm-10 task-description"></pre>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-5">
+										<button type="button" class="btn btn-primary task-action-ok">Edit</button>
+										<button type="button" class="btn btn-default task-action-cancel">Cancel</button>
+									</div>
+									<div class="col-sm-offset-3 col-sm-2">
+										<button type="button" class="btn btn-danger task-action-remove">Delete</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+					<div class="panel panel-default" id="updatePanel" style="display: none;">
+						<div class="panel-heading task-title">Edit task</div>
+						<div class="panel-body">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label class="col-sm-2">Title</label>
+									<div class="col-sm-10">
+										<input type="text" name="title" class="form-control"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2">Description</label>
+									<div class="col-sm-10">
+										<textarea name="description" rows="8" cols="40" class="form-control"></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+										<button type="button" class="btn btn-primary task-action-ok">Save</button>
+										<button type="button" class="btn btn-default task-action-cancel">Cancel</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="panel panel-default" id="createPanel" style="display: none;">
+						<div class="panel-heading">Create Task</div>
+						<div class="panel-body">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label class="col-sm-2">Title</label>
+									<div class="col-sm-10">
+										<input type="text" name="title" class="form-control "/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2">Description</label>
+									<div class="col-sm-10">
+										<textarea name="description" rows="8" cols="40" class="form-control"></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+										<button type="button" class="btn btn-primary task-action-ok">OK</button>
+										<button type="button" class="btn btn-default task-action-cancel">Cancel</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="libs/jquery-2.1.4.js"></script>
+		<script type="text/javascript" src="libs/lodash-3.10.1.js"></script>
+		<script type="text/javascript" src="scripts/todoList.js"></script>
+	</body>
+</html>
