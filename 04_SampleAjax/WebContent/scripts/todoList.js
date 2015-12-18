@@ -48,6 +48,9 @@ $(document).ready(function() {
 			var taskId = $(this).attr("data-task-id");
 			readTask(taskId).then(showTaskView);
 		});
+		$(".task-action-cancel").click(function() {
+			showPanel("emptyPanel");
+		});
 	}
 	attachHandlers();
 	reloadTasks();
