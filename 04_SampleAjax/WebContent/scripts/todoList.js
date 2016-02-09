@@ -25,6 +25,13 @@ $(document).ready(function() {
 			dataType: "json"
 		});
 	}
+	function deleteTask(taskId) {
+		return $.ajax(taskEndpoint(taskId), {
+			method: "DELETE",
+			dataType: "json"
+		});
+	}
+
 	function createTask(task) {
 		return $.ajax(ENDPOINT, {
 			method: "POST",
@@ -36,6 +43,7 @@ $(document).ready(function() {
 	function showTaskView(task) {
 		$("#readPanel .task-title").text(task.title);
 		$("#readPanel .task-description").text(task.description);
+		$("#readPanel .task-action-remove").attr("data-task-id", task.id);
 		showPanel("readPanel");
 	}
 	function reloadTasks() {
@@ -73,6 +81,13 @@ $(document).ready(function() {
 				reloadTasks().then(function() {
 					showTaskView(response);
 				});
+			});
+		});
+		$(".task-action-remove").click(function() {
+			var taskId = $(this).attr("data-task-id");
+			deleteTask(taskId).then(function() {
+				reloadTasks();
+				showPanel("emptyPanel");
 			});
 		});
 	}
