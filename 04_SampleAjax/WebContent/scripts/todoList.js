@@ -11,6 +11,7 @@ $(document).ready(function() {
 			$("#"+nextValue).hide();
 		});
 		$("#"+panelName).show();
+		$("#tasksList li.active").removeClass("active");
 	}
 
 	function listTasks() {
@@ -48,12 +49,16 @@ $(document).ready(function() {
 			contentType: "application/json; charset=utf-8"
 		});
 	}
+	function highlightTaskInTaskList(task) {
+		$("#tasksList li[data-task-id='"+task.id+"']").addClass("active");
+	}
 	function showTaskView(task) {
 		$("#readPanel .task-title").text(task.title);
 		$("#readPanel .task-description").text(task.description);
 		$("#readPanel .task-action-remove").attr("data-task-id", task.id);
 		$("#readPanel .task-action-ok").attr("data-task-id", task.id);
 		showPanel("readPanel");
+		highlightTaskInTaskList(task);
 	}
 	function showTaskUpdate(task) {
 		$("#updatePanel [name='title']").val(task.title);
@@ -61,6 +66,7 @@ $(document).ready(function() {
 
 		$("#updatePanel .task-action-ok").attr("data-task-id", task.id);
 		showPanel("updatePanel");
+		highlightTaskInTaskList(task);
 	}
 
 	function reloadTasks() {
