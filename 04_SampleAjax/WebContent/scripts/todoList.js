@@ -40,12 +40,29 @@ $(document).ready(function() {
 			contentType: "application/json; charset=utf-8"
 		});
 	}
+	function updateTask(task) {
+		return $.ajax(taskEndpoint(task.id), {
+			method: "PUT",
+			dataType: "json",
+			data: JSON.stringify(task),
+			contentType: "application/json; charset=utf-8"
+		});
+	}
 	function showTaskView(task) {
 		$("#readPanel .task-title").text(task.title);
 		$("#readPanel .task-description").text(task.description);
 		$("#readPanel .task-action-remove").attr("data-task-id", task.id);
+		$("#readPanel .task-action-ok").attr("data-task-id", task.id);
 		showPanel("readPanel");
 	}
+	function showTaskUpdate(task) {
+		$("#updatePanel [name='title']").val(task.title);
+		$("#updatePanel [name='description']").val(task.description);
+
+		$("#updatePanel .task-action-ok").attr("data-task-id", task.id);
+		showPanel("updatePanel");
+	}
+
 	function reloadTasks() {
 		return listTasks().then(function(response) {
 			function addTaskToList(task) {
@@ -88,6 +105,22 @@ $(document).ready(function() {
 			deleteTask(taskId).then(function() {
 				reloadTasks();
 				showPanel("emptyPanel");
+			});
+		});
+		$("#readPanel .task-action-ok").click(function() {
+			var taskId = $(this).attr("data-task-id");
+			readTask(taskId).then(showTaskUpdate);
+		});
+		$("#updatePanel .task-action-ok").click(function() {
+			var task = {
+				title: $("#updatePanel [name='title']").val(),
+				description: $("#updatePanel [name='description']").val(),
+				id: $(this).attr("data-task-id")
+			};
+			updateTask(task).then(function(response) {
+				reloadTasks().then(function() {
+					showTaskView(response);
+				});
 			});
 		});
 	}
