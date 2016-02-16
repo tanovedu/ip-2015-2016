@@ -12,6 +12,10 @@ public class TasksService {
 	private List<Task> tasks = Collections.synchronizedList(
 			new LinkedList<Task>());
 	
+	public static TasksService INSTANCE = new TasksService();
+	private TasksService() {
+		
+	}
 	private synchronized long getAndIncrementNextId() {
 		return ++lastId;
 	}

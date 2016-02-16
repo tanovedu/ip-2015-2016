@@ -17,7 +17,7 @@ public class TasksRest {
 	private final TasksService tasksService;
 
 	public TasksRest() {
-		this.tasksService = new TasksService();
+		this.tasksService = TasksService.INSTANCE;
 	}
 	
 	@GET
