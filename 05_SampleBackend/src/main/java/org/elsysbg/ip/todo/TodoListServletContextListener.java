@@ -1,5 +1,7 @@
 package org.elsysbg.ip.todo;
 
+import org.elsysbg.ip.todo.services.TasksService;
+
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.servlet.GuiceServletContextListener;
@@ -15,6 +17,7 @@ public class TodoListServletContextListener extends GuiceServletContextListener 
 			injector = Guice.createInjector(new ServletModule() {
 				@Override
 				protected void configureServlets() {
+					bind(TasksService.class);
 				}
 			});
 		}

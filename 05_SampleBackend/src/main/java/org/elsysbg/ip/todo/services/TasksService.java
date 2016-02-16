@@ -5,17 +5,16 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.inject.Singleton;
+
 import org.elsysbg.ip.todo.entities.Task;
 
+@Singleton
 public class TasksService {
 	private long lastId = 0;
 	private List<Task> tasks = Collections.synchronizedList(
 			new LinkedList<Task>());
 	
-	public static TasksService INSTANCE = new TasksService();
-	private TasksService() {
-		
-	}
 	private synchronized long getAndIncrementNextId() {
 		return ++lastId;
 	}

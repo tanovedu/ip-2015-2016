@@ -3,6 +3,7 @@ package org.elsysbg.ip.todo.rest;
 import java.util.Collections;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -16,8 +17,9 @@ import org.elsysbg.ip.todo.services.TasksService;
 public class TasksRest {
 	private final TasksService tasksService;
 
-	public TasksRest() {
-		this.tasksService = TasksService.INSTANCE;
+	@Inject
+	public TasksRest(TasksService tasksService) {
+		this.tasksService = tasksService;
 	}
 	
 	@GET
