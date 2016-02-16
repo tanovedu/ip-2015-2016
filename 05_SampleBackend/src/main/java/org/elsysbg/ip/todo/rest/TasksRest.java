@@ -14,7 +14,7 @@ import org.elsysbg.ip.todo.entities.Task;
 public class TasksRest {
 	
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public List<Task> getTasks() {
 		final Task task = new Task();
 		task.setDescription("description");
