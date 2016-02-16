@@ -10,9 +10,15 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.elsysbg.ip.todo.entities.Task;
+import org.elsysbg.ip.todo.services.TasksService;
 
 @Path("/tasks")
 public class TasksRest {
+	private final TasksService tasksService;
+
+	public TasksRest() {
+		this.tasksService = new TasksService();
+	}
 	
 	@GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
