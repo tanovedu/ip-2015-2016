@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	"use strict";
-	var ENDPOINT = "http://localhost:3000/tasks";
+	var ENDPOINT = "http://localhost:18080/05_SampleBackend/api/v1/tasks";
 	function taskEndpoint(taskId) {
 		return ENDPOINT + "/" + taskId;
 	}
