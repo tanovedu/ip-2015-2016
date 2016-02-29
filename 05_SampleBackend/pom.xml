@@ -12,6 +12,7 @@
 		<compileTarget>1.7</compileTarget>
 		<guice.version>4.0</guice.version>
 		<hk2.version>2.4.0-b31</hk2.version>
+		<openjpa.version>2.4.0</openjpa.version>
 	</properties>
 
 	<packaging>war</packaging>
@@ -65,7 +66,17 @@
 			<version>3.0.1</version>
 			<scope>provided</scope>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.apache.openjpa</groupId>
+			<artifactId>openjpa</artifactId>
+			<version>${openjpa.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derby</artifactId>
+			<version>10.12.1.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -95,6 +106,9 @@
 					<downloadJavadocs>true</downloadJavadocs>
 					<useProjectReferences>true</useProjectReferences>
 					<wtpContextName>05_SampleBackend</wtpContextName>
+					<additionalProjectFacets>
+						<jpt.jpa>2.0</jpt.jpa>
+					</additionalProjectFacets>
 				</configuration>
 			</plugin>
 			<plugin>

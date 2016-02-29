@@ -1,0 +1,30 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+
+	<persistence-unit name="todolist-jpa">
+		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+		<class>org.elsysbg.ip.todo.entities.Task</class>
+		
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby:todolistdb;create=true"/>
+			<property name="javax.persistence.jdbc.user" value="todolistuser"/>
+			<property name="javax.persistence.jdbc.password" value="todolistpassword"/>
+		
+			<property name="openjpa.Log" value="DefaultLevel=WARN, Tool=INFO" />
+  			<property name="openjpa.jdbc.SynchronizeMappings"
+				value="buildSchema(foreignKeys=true,schemaAction='refresh')" />
+				
+			<property name="openjpa.jdbc.SchemaFactory" value="native(ForeignKeys=true)"/> 
+			<property name="openjpa.jdbc.MappingDefaults" value="ForeignKeyDeleteAction=restrict,JoinForeignKeyDeleteAction=restrict"/>
+
+			<property name="openjpa.DynamicEnhancementAgent" value="true" />
+			<property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+			<property name="openjpa.QueryCache" value="false"/>
+		</properties>
+	</persistence-unit>
+</persistence>
+
