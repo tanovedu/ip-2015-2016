@@ -6,6 +6,7 @@ import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 import org.elsysbg.ip.todo.entities.Task;
 
@@ -36,7 +37,14 @@ public class TasksService {
 		}
 	}
 	public List<Task> getTasks() {
-		return null;
+		final EntityManager em = emf.createEntityManager();
+		try {
+			final TypedQuery<Task> query =
+				em.createNamedQuery(Task.QUERY_ALL, Task.class);
+			return query.getResultList();
+		} finally {
+			em.close();
+		}
 	}
 	public Task getTask(long taskId) {
 		final EntityManager em = emf.createEntityManager();
