@@ -67,5 +67,22 @@ public class TasksService {
 		}
 	}
 	public void deleteTask(long taskId) {
+		final EntityManager em = emf.createEntityManager();
+		try {
+			em.getTransaction().begin();
+			final Task task = em.find(Task.class, taskId);
+			if (task == null) {
+				throw new IllegalArgumentException(
+						"No task with id: " + taskId);
+			}
+			em.remove(task);
+			
+			em.getTransaction().commit();
+		} finally {
+			if (em.getTransaction().isActive()) {
+				em.getTransaction().rollback();
+			}
+			em.close();
+		}
 	}
 }
