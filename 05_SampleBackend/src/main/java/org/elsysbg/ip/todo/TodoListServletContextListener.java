@@ -1,5 +1,6 @@
 package org.elsysbg.ip.todo;
 
+import org.elsysbg.ip.todo.services.EntityManagerService;
 import org.elsysbg.ip.todo.services.TasksService;
 
 import com.google.inject.Guice;
@@ -18,6 +19,7 @@ public class TodoListServletContextListener extends GuiceServletContextListener 
 				@Override
 				protected void configureServlets() {
 					bind(TasksService.class);
+					bind(EntityManagerService.class);
 				}
 			});
 		}
