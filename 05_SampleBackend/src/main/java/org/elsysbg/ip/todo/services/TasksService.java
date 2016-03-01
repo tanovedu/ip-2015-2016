@@ -42,7 +42,19 @@ public class TasksService {
 		return null;
 	}
 	public Task updateTask(Task task) {
-		return null;
+		final EntityManager em = emf.createEntityManager();
+		try {
+			em.getTransaction().begin();
+			final Task result = em.merge(task);
+			em.getTransaction().commit();
+			
+			return result;
+		} finally {
+			if (em.getTransaction().isActive()) {
+				em.getTransaction().rollback();
+			}
+			em.close();
+		}
 	}
 	public void deleteTask(long taskId) {
 	}
