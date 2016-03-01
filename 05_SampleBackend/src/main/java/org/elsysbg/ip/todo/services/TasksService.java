@@ -24,16 +24,16 @@ public class TasksService {
 		final EntityManager em = emf.createEntityManager();
 		try {
 			em.getTransaction().begin();
-			// do some stuff
-			em.getTransaction().commit();	
+			em.persist(task);
+			em.getTransaction().commit();
+			
+			return task;
 		} finally {
 			if (em.getTransaction().isActive()) {
 				em.getTransaction().rollback();
 			}
 			em.close();
 		}
-		
-		return null;
 	}
 	public List<Task> getTasks() {
 		return null;
