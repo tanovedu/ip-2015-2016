@@ -1,11 +1,23 @@
 package org.elsysbg.ip.todo.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
+@Entity
 public class Task {
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
 	private long id;
+	
+	@Column(nullable = false)
 	private String title;
+	
+	@Column(nullable = false)
 	private String description;
 
 	public long getId() {
