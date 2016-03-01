@@ -39,7 +39,17 @@ public class TasksService {
 		return null;
 	}
 	public Task getTask(long taskId) {
-		return null;
+		final EntityManager em = emf.createEntityManager();
+		try {
+			final Task result = em.find(Task.class, taskId);
+			if (result == null) {
+				throw new IllegalArgumentException(
+						"No task with id: " + taskId);
+			}
+			return result;
+		} finally {
+			em.close();
+		}
 	}
 	public Task updateTask(Task task) {
 		final EntityManager em = emf.createEntityManager();
