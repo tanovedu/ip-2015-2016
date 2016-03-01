@@ -14,7 +14,7 @@
 			<property name="javax.persistence.jdbc.user" value="todolistuser"/>
 			<property name="javax.persistence.jdbc.password" value="todolistpassword"/>
 		
-			<property name="openjpa.Log" value="DefaultLevel=WARN, Tool=INFO" />
+			<property name="openjpa.Log" value="DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE" />
   			<property name="openjpa.jdbc.SynchronizeMappings"
 				value="buildSchema(foreignKeys=true,schemaAction='refresh')" />
 				
