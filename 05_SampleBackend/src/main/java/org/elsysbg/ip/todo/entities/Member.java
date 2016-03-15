@@ -5,11 +5,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity
+@NamedQueries({
+	@NamedQuery(name=Member.QUERY_ALL,
+		query = "SELECT m from Member m")
+})
 public class Member {
+	public static final String QUERY_ALL = "membersAll";
+
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private long id;
