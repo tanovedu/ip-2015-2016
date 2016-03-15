@@ -13,21 +13,20 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.elsysbg.ip.todo.entities.Member;
 import org.elsysbg.ip.todo.entities.Task;
-import org.elsysbg.ip.todo.services.MembersService;
+import org.elsysbg.ip.todo.services.AuthenticationService;
 import org.elsysbg.ip.todo.services.TasksService;
 
 @Path("/tasks")
 public class TasksRest {
 	private final TasksService tasksService;
-	private final MembersService membersService;
+	private final AuthenticationService authenticationService;
 
 	@Inject
 	public TasksRest(TasksService tasksService,
-		MembersService membersService) {
+			AuthenticationService authenticationService) {
 		this.tasksService = tasksService;
-		this.membersService = membersService;
+		this.authenticationService = authenticationService;
 	}
 	
 	@GET
@@ -47,10 +46,7 @@ public class TasksRest {
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Task createTask(Task task) {
-		// TODO get currently logged member from security framework
-		final List<Member> members = membersService.getMembers();
-		task.setAuthor(members.iterator().next());
-		// or task.setAuthor(members.get(0));
+		task.setAuthor(authenticationService.getCurrentlyLoggedInMember());
 		return tasksService.createTask(task);
 	}
 	
