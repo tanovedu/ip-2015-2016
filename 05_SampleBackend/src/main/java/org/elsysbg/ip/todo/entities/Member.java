@@ -1,10 +1,22 @@
 package org.elsysbg.ip.todo.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Member {
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
 	private long id;
 	
+	@Column(nullable = false, unique = true)
 	private String username;
 
+	// TODO password should be hashed/salted in real world projects
+	@Column(nullable = false)
 	private String password;
 
 	public long getId() {

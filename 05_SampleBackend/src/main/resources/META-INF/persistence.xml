@@ -6,6 +6,7 @@
 	<persistence-unit name="todolist-jpa">
 		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
 		<class>org.elsysbg.ip.todo.entities.Task</class>
+		<class>org.elsysbg.ip.todo.entities.Member</class>
 		
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
