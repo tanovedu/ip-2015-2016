@@ -61,4 +61,8 @@ public class AuthenticationService {
 		final UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 		subject.login(token);
 	}
+
+	public void logout(Subject subject) {
+		subject.logout();
+	}
 }
