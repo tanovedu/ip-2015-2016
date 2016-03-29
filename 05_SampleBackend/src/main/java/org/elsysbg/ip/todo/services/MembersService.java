@@ -62,5 +62,17 @@ public class MembersService {
 			em.close();
 		}
 	}
+
+	public Member getMemberByUsername(String username) {
+		final EntityManager em = entityManagerService.createEntityManager();
+		try {
+			final TypedQuery<Member> query =
+					em.createNamedQuery(Member.QUERY_BY_USERNAME, Member.class);
+			query.setParameter("username", username);
+			return query.getSingleResult();
+		} finally {
+			em.close();
+		}
+	}
 	
 }

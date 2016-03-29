@@ -1,7 +1,6 @@
 package org.elsysbg.ip.todo.services;
 
 import java.util.Collection;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -26,11 +25,12 @@ public class AuthenticationService {
 		this.membersServiceProvider = membersServiceProvider;
 	}
 
-	public Member getCurrentlyLoggedInMember() {
-		// TODO get currently logged member from security framework
-		final List<Member> members = membersServiceProvider.get().getMembers();
-		return members.iterator().next();
-		// or return members.get(0);
+	public Member getCurrentlyLoggedInMember(Subject subject) {
+		final String username = (String) subject.getPrincipal();
+		if (username == null) {
+			return null;
+		}
+		return membersServiceProvider.get().getMemberByUsername(username);
 	}
 
 	public String encryptPassword(String password) {
