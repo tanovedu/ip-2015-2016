@@ -12,13 +12,17 @@ import org.elsysbg.ip.todo.entities.Member;
 @Singleton
 public class MembersService {
 	private final EntityManagerService entityManagerService;
+	private final AuthenticationService authenticationService;
 	
 	@Inject
-	public MembersService(EntityManagerService entityManagerService) {
+	public MembersService(EntityManagerService entityManagerService,
+		AuthenticationService authenticationService) {
 		this.entityManagerService = entityManagerService;
+		this.authenticationService = authenticationService;
 	}
 
 	public Member createMember(Member member) {
+		member.setPassword(authenticationService.encryptPassword(member.getPassword()));
 		final EntityManager em = entityManagerService.createEntityManager();
 		try {
 			em.getTransaction().begin();

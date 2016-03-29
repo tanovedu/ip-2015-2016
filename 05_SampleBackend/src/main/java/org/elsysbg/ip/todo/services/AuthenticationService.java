@@ -4,28 +4,31 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.inject.Singleton;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authc.credential.PasswordMatcher;
 import org.apache.shiro.authc.credential.PasswordService;
 import org.apache.shiro.mgt.RealmSecurityManager;
 import org.apache.shiro.realm.AuthenticatingRealm;
 import org.apache.shiro.realm.Realm;
+import org.apache.shiro.subject.Subject;
 import org.elsysbg.ip.todo.entities.Member;
 
 @Singleton
 public class AuthenticationService {
-	private final MembersService membersService;
+	private final Provider<MembersService> membersServiceProvider;
 
 	@Inject
-	public AuthenticationService(MembersService membersService) {
-		this.membersService = membersService;
+	public AuthenticationService(Provider<MembersService> membersServiceProvider) {
+		this.membersServiceProvider = membersServiceProvider;
 	}
 
 	public Member getCurrentlyLoggedInMember() {
 		// TODO get currently logged member from security framework
-		final List<Member> members = membersService.getMembers();
+		final List<Member> members = membersServiceProvider.get().getMembers();
 		return members.iterator().next();
 		// or return members.get(0);
 	}
@@ -52,5 +55,10 @@ public class AuthenticationService {
 			throw new IllegalStateException("Bad configuration");
 		}
 		return credentialsMatcher.getPasswordService();
+	}
+
+	public void login(Subject subject, String username, String password) {
+		final UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+		subject.login(token);
 	}
 }
