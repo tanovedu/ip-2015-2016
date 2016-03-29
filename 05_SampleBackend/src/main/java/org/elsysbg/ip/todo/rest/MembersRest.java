@@ -11,6 +11,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.apache.shiro.authz.annotation.RequiresGuest;
 import org.elsysbg.ip.todo.entities.Member;
 import org.elsysbg.ip.todo.entities.Task;
 import org.elsysbg.ip.todo.services.MembersService;
@@ -31,6 +32,7 @@ public class MembersRest {
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@RequiresGuest
 	public Member createMember(Member member) {
 		return membersService.createMember(member);
 	}
