@@ -2,6 +2,8 @@ package org.elsysbg.ip.todo.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,6 +39,11 @@ public class Member {
 
 	@Column(nullable = false)
 	private String password;
+	
+	// store enum value as string (value name), not as integer (position in the enum)
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	private SecurityRole role;
 
 	public long getId() {
 		return id;
@@ -73,4 +80,11 @@ public class Member {
 		this.password = password;
 	}
 
+	public SecurityRole getRole() {
+		return role;
+	}
+
+	public void setRole(SecurityRole role) {
+		this.role = role;
+	}
 }

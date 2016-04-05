@@ -16,6 +16,7 @@ import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresGuest;
 import org.apache.shiro.subject.Subject;
 import org.elsysbg.ip.todo.entities.Member;
+import org.elsysbg.ip.todo.entities.SecurityRole;
 import org.elsysbg.ip.todo.entities.Task;
 import org.elsysbg.ip.todo.services.AuthenticationService;
 import org.elsysbg.ip.todo.services.MembersService;
@@ -41,6 +42,7 @@ public class MembersRest {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@RequiresGuest
 	public Member createMember(Member member) {
+		member.setRole(SecurityRole.USER);
 		return membersService.createMember(member);
 	}
 	
