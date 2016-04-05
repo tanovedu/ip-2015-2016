@@ -14,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresGuest;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.elsysbg.ip.todo.entities.Member;
 import org.elsysbg.ip.todo.entities.SecurityRole;
@@ -67,6 +68,8 @@ public class MembersRest {
 	
 	@GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@RequiresPermissions("members:list")
+	// or @RequiresRoles("ADMINISTRATOR")
 	public List<Member> getMembers() {
 		return membersService.getMembers();
 	}
