@@ -62,4 +62,10 @@ public class MembersRest {
 		}
 		return tasksService.getTasksByAuthor(author);
 	}
+	
+	@GET
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public List<Member> getMembers() {
+		return membersService.getMembers();
+	}
 }
