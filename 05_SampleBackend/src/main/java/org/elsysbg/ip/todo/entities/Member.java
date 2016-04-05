@@ -7,7 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 @XmlRootElement
 @Entity
@@ -29,7 +35,6 @@ public class Member {
 	@Column(nullable = false, unique = true)
 	private String username;
 
-	// TODO password should be hashed/salted in real world projects
 	@Column(nullable = false)
 	private String password;
 
@@ -49,11 +54,22 @@ public class Member {
 		this.username = username;
 	}
 
+	// password is not returned in REST
+	// but can be set
+	@XmlTransient
+	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}
 
+	// password is not returned in REST
+	// but can be set
+	@XmlElement
+	@JsonInclude
+	@JsonSetter
 	public void setPassword(String password) {
+		// for security reasons user should not be able to update the password
+		// without providing the old one in real world projects
 		this.password = password;
 	}
 
