@@ -2,9 +2,9 @@
  - Developer should have *git*, *apache tomcat 7*, *maven*, *java 7 jdk* installed.
 
  - These command should be invoked:
- - ```server$ mvn eclipse:eclipse clean install```
+ - ```server$ mvn eclipse:eclipse clean install war:war```
 
-Then app can be deployed in any web server.
+Then app can be deployed in any servlet container.
 
 # Run TestNG unit tests in Eclipse
  - Install TestNG plugin from Help > Eclipse Marketplace > TestNG
