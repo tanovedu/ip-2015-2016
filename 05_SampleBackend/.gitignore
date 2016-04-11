@@ -3,3 +3,6 @@
 .project
 .settings
 libs/
+test-output/
+tomcat.58080/
+derby.log

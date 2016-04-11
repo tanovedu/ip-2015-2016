@@ -6,6 +6,20 @@
 
 Then app can be deployed in any web server.
 
+# Run TestNG unit tests in Eclipse
+ - Install TestNG plugin from Help > Eclipse Marketplace > TestNG
+ - Add environment variables from the POM + javaagent:
+```
+<systemPropertyVariables>
+	<jersey.test.host>localhost</jersey.test.host>
+	<jersey.config.test.container.port>58080</jersey.config.test.container.port>
+	<jersey.config.test.container.factory>org.glassfish.jersey.test.external.ExternalTestContainerFactory</jersey.config.test.container.factory>
+</systemPropertyVariables>
+```
+  - add
+```-Djersey.test.host=localhost -Djersey.config.test.container.port=58080 -Djersey.config.test.container.factory=org.glassfish.jersey.test.external.ExternalTestContainerFactory -javaagent:${env_var:HOME}/.m2/repository/org/apache/openjpa/openjpa/2.4.0/openjpa-2.4.0.jar```
+to the run configuration (*VM Arguments*)
+
 # Working with GIT
  - **MERGE** should **not** be used! Only **REBASE** (```git pull --rebase```)
  - ```git add .```
@@ -13,3 +27,5 @@ Then app can be deployed in any web server.
  - ```git pull --rebase```
  - ```mvn clean install```
  - ```git push```
+
+ 
