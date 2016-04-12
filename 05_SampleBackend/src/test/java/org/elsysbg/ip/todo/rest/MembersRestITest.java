@@ -26,4 +26,11 @@ public class MembersRestITest extends BaseIntegrationTest {
 		assertEquals(member.getRole(), SecurityRole.USER);
 		assertNotEquals(member.getId(), 0);
 	}
+
+	@Test(expectedExceptions=javax.ws.rs.ClientErrorException.class, expectedExceptionsMessageRegExp="HTTP 409 Conflict")
+	public void testCreateMemberAlreadyExists() {
+		final MembersClient membersClient = new MembersClient(this);
+		membersClient.createMember(USERNAME_DEFAULT, PASSWORD_DEFAULT);
+		membersClient.createMember(USERNAME_DEFAULT, PASSWORD_DEFAULT);
+	}
 }
